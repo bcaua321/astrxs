@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, Image, View } from 'react-native';
+import { FlatList, Image, ScrollView, View } from 'react-native';
 import Header from '../components/Header';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import ButtonGroup from './ButtonGroup';
 import LoadScreen from '../components/LoadScreen';
 import LoadImages from './LoadImages';
+import ApodApi from '../Responses/ApodApi';
+import Card from '../components/Card';
 
 export default function Home() {
 	const [data, setData] = useState<ApodApi[] | null>(null);
@@ -45,39 +47,25 @@ export default function Home() {
 	};
 
 	return (
-		<>
-			<Header></Header>
-			<ButtonGroup
-				onButtonDateChange={showDatepicker}
-				onButtonRandomPress={() => console.log("Fui Clicado.")} 
-			/>
 
-			{!data && <LoadScreen />}
-			<View>
-				<FlatList
-					data={data}
-					keyExtractor={(item) => item.title}
-					renderItem={renderItem}
-				/>
-			</View>
-		</>
+		<View>
+			<FlatList
+				ListHeaderComponent={<View>
+					<Header></Header>
+					<ButtonGroup
+						onButtonDateChange={showDatepicker}
+					/>
+					{!data && <LoadScreen />}
+				</View>}
+				data={data}
+				keyExtractor={(item) => item.title}
+				renderItem={renderItem}
+			/>
+		</View>
 	)
 }
 
 const renderItem = ({ item }: { item: ApodApi }) => (
-	<Image width={200} height={200} source={{ uri: item.hdurl ? item.url : "" }} />
+	<Card item={item} />
 );
-
-interface ApodApi {
-	concepts: string,
-	copyright: string,
-	date: string,
-	explanation: string,
-	hdurl: string,
-	media_type: string,
-	title: string,
-	url: string
-}
-
-
 

@@ -6,15 +6,11 @@ import { Button } from "react-native-paper";
 export default function ButtonGroup(
     {
         onButtonDateChange,
-        onButtonRandomPress,
     }: ButtonProps) {
     return (
         <View style={styles.buttonGroup}>
-            <Button icon="dice-3-outline" mode="contained" onPress={onButtonRandomPress}>
-                Random
-            </Button>
-            <Button icon="calendar-month" buttonColor='#484848' mode="contained" onPress={onButtonDateChange}>
-                Selecionar Data
+            <Button icon="calendar-month" mode="outlined" onPress={onButtonDateChange}>
+                Select Date
             </Button>
         </View>
     )
@@ -22,7 +18,6 @@ export default function ButtonGroup(
 
 interface ButtonProps {
     onButtonDateChange: () => void,
-    onButtonRandomPress: () => void
 }
 
 const styles = StyleSheet.create({

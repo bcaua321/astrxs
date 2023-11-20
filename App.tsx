@@ -6,8 +6,10 @@ export default function App() {
 
 	return (
 		<PaperProvider>
-			<StatusBar />
-			<Home />
+			<View>
+				<StatusBar />
+				<Home />
+			</View>
 		</PaperProvider>
 	);
 }

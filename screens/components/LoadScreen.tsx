@@ -6,7 +6,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function LoadScreen() {
     return  (
         <View style={styles.container}>
-            <ActivityIndicator animating={true} size={'large'} color={"#484848"} />
+            <ActivityIndicator animating={true} size={'large'} color={"#663399"} />
         </View>
     )
 }
