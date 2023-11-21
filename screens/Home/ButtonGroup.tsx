@@ -1,6 +1,6 @@
 import { DateTimePickerEvent } from "@react-native-community/datetimepicker";
 import React from "react";
-import { GestureResponderEvent, View, StyleSheet, ViewStyle, StyleProp } from "react-native";
+import {  View, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
 export default function ButtonGroup(
@@ -31,4 +31,3 @@ const styles = StyleSheet.create({
         marginBottom: 30
     }
 });
-// DCD5D5

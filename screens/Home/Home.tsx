@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, Image, ScrollView, View } from 'react-native';
+import { FlatList, Image, RefreshControl, ScrollView, View } from 'react-native';
 import Header from '../components/Header';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import ButtonGroup from './ButtonGroup';
@@ -9,22 +9,12 @@ import ApodApi from '../Responses/ApodApi';
 import Card from '../components/Card';
 
 export default function Home() {
-	const [data, setData] = useState<ApodApi[] | null>(null);
+	const [data, setData] = useState<ApodApi[] | null>([]);
 	const [date, setDate] = useState<Date | undefined>();
 	const [error, setError] = useState(null);
+	const [refreshing, setRefreshing] = useState(true);
 
 	useEffect(() => {
-		const fetchDataFromApi = async () => {
-			try {
-				const result = await LoadImages();
-				console.log(result);
-				setData(result);
-			} catch (error: any) {
-				console.log(error);
-				setError(error.message);
-			}
-		};
-
 		fetchDataFromApi();
 	}, []);
 
@@ -46,6 +36,19 @@ export default function Home() {
 		showMode('date');
 	};
 
+	const fetchDataFromApi = async () => {
+		setRefreshing(true);
+		try {
+			const result = await LoadImages();
+			setData(result);
+			setRefreshing(false);
+		} catch (error: any) {
+			console.log(error);
+			setError(error.message);
+		}
+	};
+
+	console.log(`Refreshing: ${refreshing}`)
 	return (
 
 		<View>
@@ -55,11 +58,13 @@ export default function Home() {
 					<ButtonGroup
 						onButtonDateChange={showDatepicker}
 					/>
-					{!data && <LoadScreen />}
 				</View>}
 				data={data}
 				keyExtractor={(item) => item.title}
 				renderItem={renderItem}
+				refreshControl={
+					<RefreshControl colors={['#663399']} refreshing={refreshing} onRefresh={fetchDataFromApi} />
+				}
 			/>
 		</View>
 	)
@@ -68,4 +73,3 @@ export default function Home() {
 const renderItem = ({ item }: { item: ApodApi }) => (
 	<Card item={item} />
 );
-

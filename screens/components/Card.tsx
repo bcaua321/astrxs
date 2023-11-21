@@ -6,7 +6,7 @@ import { Badge, Button } from 'react-native-paper';
 const windowWidth = Dimensions.get('window').width;
 
 export default function Card({ item } : { item: ApodApi }) {
-    const imgUrl = item.hdurl ? item.hdurl : item.url;
+    const imgUrl = item.url ? item.url : item.hdurl;
     
     return (
         <View style={[style.container, style.elevation]}>
@@ -16,7 +16,7 @@ export default function Card({ item } : { item: ApodApi }) {
             <View style={style.containerInner}>
                 <View style={style.description}>
                     <Text style={style.title}>{item.title}</Text>
-                    <Text style={style.paragraph}>Date: {item.date}</Text>
+                    <Text style={style.date}>Date: {item.date}</Text>
                 </View>
                 <Button mode="text">
                     <Text style={style.button}>
@@ -60,12 +60,14 @@ const style = StyleSheet.create({
         width: 200
     },
     title: {
+        flexWrap: 'wrap',
         fontFamily: 'Roboto',
         fontSize: 15,
         fontWeight: '800',
         color: '#555555'
     },
-    paragraph: {
+    date: {
+        flexWrap: 'wrap',
         fontSize: 15,
         fontWeight: '700',
         color: '#797575',

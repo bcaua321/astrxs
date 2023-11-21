@@ -23,9 +23,8 @@ const obj: options = {
 	apiKey: ""
 }
 
-const LoadImages = async () => {
+const LoadImages = async ()=> {
     const result = Request<ApodApi[]>(url, obj);
 	return result;
 };
-
 export default LoadImages;
