@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { FlatList, Image, Pressable, RefreshControl, ScrollView, View } from 'react-native';
+import { FlatList, Pressable, RefreshControl, View } from 'react-native';
 import Header from '../components/Header';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import ButtonGroup from './ButtonGroup';
 import LoadImages from './LoadImages';
 import ApodApi from '../Responses/ApodApi';
 import Card from '../components/Card';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { PropsHome } from "../../types/types";
 
-type RootStackParamList = {
-	Home: undefined;
-	Detail: { item: ApodApi }
-};
-
-type props = NativeStackScreenProps<RootStackParamList, 'Home'>;
-
-export default function Home({ route, navigation }: props) {
+export default function Home({ route, navigation }: PropsHome) {
 	const [data, setData] = useState<ApodApi[] | null>([]);
 	const [date, setDate] = useState<Date | undefined>();
+	const [refreshing, setRefreshing] = useState<boolean>(true);
 	const [error, setError] = useState(null);
-	const [refreshing, setRefreshing] = useState(true);
 
 	useEffect(() => {
+		// When date is change, the flatlist will re-render
 		fetchDataFromApi(date);
 	}, [date]);
 
@@ -46,12 +40,12 @@ export default function Home({ route, navigation }: props) {
 	const fetchDataFromApi = async (date: Date | undefined) => {
 		setRefreshing(true);
 		try {
-			const result = await LoadImages(date?.toISOString().split('T')[0]);
-
+			// YYYY-MM-DD
+			const dateFormated = date?.toISOString().split('T')[0];
+			const result = await LoadImages(dateFormated);
 			setData(result);
 			setRefreshing(false);
 		} catch (error: any) {
-			console.log(error);
 			setError(error.message);
 		}
 	};
@@ -76,7 +70,11 @@ export default function Home({ route, navigation }: props) {
 				keyExtractor={(item) => item.title}
 				renderItem={renderItem}
 				refreshControl={
-					<RefreshControl colors={['#663399']} refreshing={refreshing} onRefresh={() => fetchDataFromApi(undefined)} />
+					<RefreshControl
+						colors={['#663399']}
+						refreshing={refreshing}
+						onRefresh={() => fetchDataFromApi(undefined)}
+					/>
 				}
 			/>
 		</View>

@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
-import { Button, StatusBar, View, StyleSheet, ScrollView } from 'react-native'; import Home from './screens/Home/Home';
-import { PaperProvider } from 'react-native-paper';
+import React from 'react';
+import Home from './screens/Home/Index';
 import ImageDetail from './screens/ImageDetail/Index';
-import { NavigationContainer, createNavigationContainerRef, } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ApodApi from './screens/Responses/ApodApi';
-
-
-type RootStackParamList = {
-	Home: undefined;
-	Detail: undefined
-};
+import { RootStackParamList } from './types/types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,11 +19,3 @@ export default function App() {
 		</>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
-	}
-});

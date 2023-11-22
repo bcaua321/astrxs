@@ -1,6 +1,6 @@
 import { Image, View, Text, StyleSheet, Dimensions} from 'react-native';
 import ApodApi from '../Responses/ApodApi';
-import { Badge, Button } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
 
 const windowWidth = Dimensions.get('window').width;

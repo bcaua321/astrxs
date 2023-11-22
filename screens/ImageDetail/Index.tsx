@@ -1,20 +1,10 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StatusBar } from "expo-status-bar";
 import { View, StyleSheet, Image, Text, ScrollView, Dimensions } from "react-native";
-import ApodApi from "../Responses/ApodApi";
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { Button } from "react-native-paper";
-
-type RootStackParamList = {
-    Home: undefined;
-    Detail: { item: ApodApi }
-};
-
-type props = NativeStackScreenProps<RootStackParamList, 'Detail'>;
-
+import { PropsDetail } from "../../types/types";
 const windowWidth = Dimensions.get('window').width;
 
-export default function ImageDetail({ route, navigation }: props) {
+export default function ImageDetail({ route, navigation }: PropsDetail) {
     const { item } = route.params;
     const imgUrl = item.url ? item.url : item.hdurl;
 

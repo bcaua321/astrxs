@@ -1,3 +1,4 @@
+// based on response of APOD API from Nasa
 export default interface ApodApi {
 	concepts: string,
 	copyright: string,
