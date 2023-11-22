@@ -12,6 +12,7 @@ export async function Request<T>(url: string = "", option: options): Promise<T> 
     throw new Error('Não foi possível obter os dados da API');
   }
 
-  const result: T = await response.json();
+  const result : T= await response.json();
+
   return result;
 }

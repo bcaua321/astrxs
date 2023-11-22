@@ -4,6 +4,7 @@ import { PaperProvider } from 'react-native-paper';
 import ImageDetail from './screens/ImageDetail/Index';
 import { NavigationContainer, createNavigationContainerRef, } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ApodApi from './screens/Responses/ApodApi';
 
 
 type RootStackParamList = {
@@ -17,7 +18,7 @@ export default function App() {
 	return (
 		<>
 			<NavigationContainer> 
-				<Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Detail">
+				<Stack.Navigator screenOptions={{headerShown: false}} initialRouteName="Home">
 					<Stack.Screen name="Home"  component={Home} />
 					<Stack.Screen name="Detail" component={ImageDetail} />
 				</Stack.Navigator>

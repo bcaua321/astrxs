@@ -13,7 +13,7 @@ interface ApodApi {
 }
 
 const API_KEY = "1yl1VJCY3CHIK05N0qOTctBNualQALzzlFO8AUeg";
-const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=10`
+const url = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`;
 
 const obj: options = {
 	method: "GET",
@@ -23,8 +23,16 @@ const obj: options = {
 	apiKey: ""
 }
 
-const LoadImages = async ()=> {
-    const result = Request<ApodApi[]>(url, obj);
+const LoadImages = async (date: string | undefined) : Promise<ApodApi[]> => {
+	const params = date ? `date=${date}` : "count=25";
+    const result = await Request<ApodApi[]>(`${url}&${params}`, obj);
+
+	if (!Array.isArray(result)) {
+		const resultArray: ApodApi[] = [result];
+
+		return resultArray;
+	}
+
 	return result;
 };
 export default LoadImages;
