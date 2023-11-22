@@ -55,7 +55,7 @@ export default function Home({ route, navigation }: props) {
 			setError(error.message);
 		}
 	};
-	
+
 	const renderItem = ({ item }: { item: ApodApi }) => (
 		<Pressable onPress={() => navigation.navigate('Detail', { item })}>
 			<Card item={item} />
@@ -76,7 +76,7 @@ export default function Home({ route, navigation }: props) {
 				keyExtractor={(item) => item.title}
 				renderItem={renderItem}
 				refreshControl={
-					<RefreshControl colors={['#663399']} refreshing={refreshing} onRefresh={fetchDataFromApi} />
+					<RefreshControl colors={['#663399']} refreshing={refreshing} onRefresh={() => fetchDataFromApi(undefined)} />
 				}
 			/>
 		</View>
