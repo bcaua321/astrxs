@@ -1,15 +1,17 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
+    "name": "astrxs",
+    "slug": "astrxs",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icon.png",
+      "image": "./assets/splash.png",
       "backgroundColor": "#ffffff",
-      "resizeMode": "contain"
+      "resizeMode": "cover",
+      "imageResizeMode": "cover",
+      "imageResizeModeValue": "50x50"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -19,9 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.astrxs"
     },
     "web": {
       "favicon": "./assets/favicon.png"
