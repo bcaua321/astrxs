@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { DateTimePickerAndroid, DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import ButtonGroup from './ButtonGroup';
 import LoadImages from './LoadImages';
-import ApodApi from '../Responses/ApodApi';
+import ApodApi from '../../responses/ApodApi';
 import Card from '../components/Card';
 import { PropsHome } from "../../types/types";
 

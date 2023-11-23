@@ -1,6 +1,6 @@
 import options from "../../utils/Request/Option";
 import { Request } from '../../utils/Request/Request';
-import ApodApi from "../Responses/ApodApi";
+import ApodApi from "../../responses/ApodApi";
 import { API_TOKEN, API_URL }  from "@env";
 
 const obj: options = {
