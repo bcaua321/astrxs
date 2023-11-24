@@ -16,11 +16,11 @@
 ## 📱 Application Demonstration
 
 <p align="center">
-  <img src="https://github.com/bcaua321/astrxs/assets/67557512/82689b59-aa3d-4a50-8f1f-bc6e79897754" alt="Sublime's custom image"/>
+  <img src="https://github.com/bcaua321/astrxs/blob/main/assets/doc/Load.png" alt="Load Images"/>
   
-  <img src="https://github.com/bcaua321/astrxs/assets/67557512/869bd175-4c2e-4fac-a794-09d8d2aac2e4" alt="Sublime's custom image"/>
+  <img src="https://github.com/bcaua321/astrxs/blob/main/assets/doc/ImageList.png" alt="List Images"/>
 
-  <img src="https://github.com/bcaua321/astrxs/assets/67557512/c2f02b00-97d1-471a-ba15-c7347afb358c" alt="Sublime's custom image"/>
+  <img src="https://github.com/bcaua321/astrxs/blob/main/assets/doc/ImageDetail.png" alt="Image Detail"/>
 </p>
 
 
