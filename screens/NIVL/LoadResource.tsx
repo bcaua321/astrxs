@@ -1,7 +1,7 @@
 import options from "../../utils/request/options";
-import { Request } from '../../utils/request/request';
-import NivlApi from "../../responses/NivlApi";
-import { API_TOKEN, API_URL_NIVL }  from "@env";
+import NivlApi from "../../utils/responses/nivlApi";
+import { request } from '../../utils/request/request';
+import { API_URL_NIVL }  from "@env";
 
 const obj: options = {
 	method: "GET",
@@ -11,12 +11,10 @@ const obj: options = {
 	apiKey: ""
 }
 
-const loadResource = async (query: string | undefined) : Promise<NivlApi[]> => {
-	const url = `${API_URL_NIVL}`; 
-	
-    console.log(`${url}apollo 11&media_type=image`);
-    const result = await Request<NivlApi[]>(`${url}apollo 11&media_type=image`, obj);
-    console.log(`${result}`);
+const loadResource =  async (query: string | undefined) : Promise<NivlApi | undefined> => {
+	const url = `${API_URL_NIVL}apollo 11&media_type=image&page_size=25`; 
+    const result = await request<NivlApi>(url, obj);
+	 
 	return result;
 };
 
