@@ -1,6 +1,6 @@
 import options from './options';
 
-export async function Request<T>(url: string = "", option: options): Promise<T> {
+export async function request<T>(url: string = "", option: options): Promise<T> {
 	const response = await fetch(url, {
 		method: option.method,
 		headers: {
@@ -12,10 +12,7 @@ export async function Request<T>(url: string = "", option: options): Promise<T> 
 		throw new Error('Não foi possível obter os dados da API');
 	}
 
-	let res = await response.json();
-	console.log(`${res}`);
-
-	const result: T = await response.json();
+	const result = await response.json() as T;
 
 	return result;
 }

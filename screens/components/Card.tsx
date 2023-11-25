@@ -1,5 +1,5 @@
 import { Image, View, Text, StyleSheet, Dimensions} from 'react-native';
-import ApodApi from '../../responses/ApodApi';
+import ApodApi from '../../utils/responses/apodApi';
 import { Button } from 'react-native-paper';
 
 

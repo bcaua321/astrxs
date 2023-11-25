@@ -1,4 +1,4 @@
-import header from './Header';
+import header from './header';
 
 export default interface options {
     method: string,

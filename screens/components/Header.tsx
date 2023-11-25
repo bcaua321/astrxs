@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import textStyles from '../../styles/textStyles';
 
 export default function Header() {
