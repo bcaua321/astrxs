@@ -1,5 +1,5 @@
-import options from "../../utils/Request/Option";
-import { Request } from '../../utils/Request/Request';
+import options from "../../utils/request/options";
+import { Request } from '../../utils/request/request';
 import NivlApi from "../../responses/NivlApi";
 import { API_TOKEN, API_URL_NIVL }  from "@env";
 
