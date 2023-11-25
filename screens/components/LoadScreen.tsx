@@ -5,7 +5,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function LoadScreen() {
     return  (
-        <View style={styles.container}>
+        <View style={[{flex: 1}, styles.container]}>
             <ActivityIndicator animating={true} size={'large'} color={"#663399"} />
         </View>
     )
@@ -15,8 +15,7 @@ export default function LoadScreen() {
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        height: windowHeight - (windowHeight / 2)
+        marginTop: windowHeight - (windowHeight / 1.5)
     }
 })
