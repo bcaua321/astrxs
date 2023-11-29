@@ -12,7 +12,7 @@ const obj: options = {
 }
 
 const loadResource =  async (query: string | undefined) : Promise<NivlApi | undefined> => {
-	const url = `${API_URL_NIVL}apollo 11&media_type=image&page_size=25`; 
+	const url = `${API_URL_NIVL}${query}&media_type=image&page_size=25`; 
     const result = await request<NivlApi>(url, obj);
 	 
 	return result;

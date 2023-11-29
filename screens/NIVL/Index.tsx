@@ -18,7 +18,6 @@ import { item, itemDetail, link } from "../../utils/responses/collection/collect
 
 const windowWidth = Dimensions.get('window').width;
 
-
 export default function Nivl({ route, navigation }: PropsNivl) {
 	const [refreshing, setRefreshing] = useState<boolean>();
 	const [collection, setCollection] = useState<NivlApi | undefined>();
@@ -27,13 +26,13 @@ export default function Nivl({ route, navigation }: PropsNivl) {
 	const [searchStr, setSearchStr] = useState("");
 
 	useEffect(() => {
-		loadData('');
-	}, []);
+		loadData(searchStr);
+	}, [searchStr]);
 
 	const loadData = async (query: string | undefined) => {
 		setRefreshing(true);
 		try {
-			const result = await loadResource('');
+			const result = await loadResource(query);
 
 			setCollection(result);
 			setData(result?.collection.items);
@@ -57,6 +56,11 @@ export default function Nivl({ route, navigation }: PropsNivl) {
 			</Pressable>
 		)
 	};
+
+	const load = (str : string) => {
+		loadData(str);
+	}
+
 
 	return (
 		<View>
