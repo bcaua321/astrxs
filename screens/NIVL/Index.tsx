@@ -5,7 +5,8 @@ import {
 	StatusBar,
 	FlatList,
 	Pressable,
-	Image
+	Image,
+	Dimensions
 } from "react-native";
 import { PropsNivl } from "../../types/types";
 import { useEffect, useState } from "react";
@@ -13,8 +14,10 @@ import loadResource from "./LoadResource";
 import NivlApi from "../../utils/responses/nivlApi";
 import { TextInput } from "react-native-paper";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { item, itemDetail, link } from "../../utils/responses/collection/collectionJson";
 
-import { item } from "../../utils/responses/collection/collectionJson";
+const windowWidth = Dimensions.get('window').width;
+
 
 export default function Nivl({ route, navigation }: PropsNivl) {
 	const [refreshing, setRefreshing] = useState<boolean>();
@@ -42,27 +45,22 @@ export default function Nivl({ route, navigation }: PropsNivl) {
 		}
 	};
 
-	const renderItem = ({ item }: { item: item }) => (
+	const renderItem = ({ item }: { item: item }) => {
+		const itemDetail: itemDetail = item.data[0];
+		const itemLinks: link = item.links[0];
 
-		<Pressable>
-			<View style={[styles.container, styles.elevation]}>
-				<View style={styles.head}>
-					<Image style={styles.image} source={{ uri: item.links[0].href }} />
+		return (
+			<Pressable>
+				<View style={styles.elevation}>
+					<Image style={styles.image} source={{ uri: itemLinks.href }} />	
 				</View>
-				<View style={styles.containerInner}>
-					<View style={styles.description}>
-						<Text style={styles.title}>{item.data[0].title}</Text>
-						<Text style={styles.date}>Date: {item.data[0].date_created.toString()}</Text>
-					</View>
-				</View>
-			</View>
-		</Pressable>
-	);
-
+			</Pressable>
+		)
+	};
 
 	return (
-		<View style={[{ flex: 1 }, styles.container]}>
-			<View>
+		<View>
+			<View style={styles.container}>
 				<View style={styles.searchSection}>
 					<Icon style={styles.searchIcon} name="search" size={18} color="#bdbdbd" />
 					<TextInput
@@ -80,7 +78,11 @@ export default function Nivl({ route, navigation }: PropsNivl) {
 						}
 					/>
 				</View>
+			</View>
+			<View style={styles.images}>
 				<FlatList
+					columnWrapperStyle={{ justifyContent: 'space-around' }}
+					numColumns={2}
 					data={data}
 					keyExtractor={(item) => item.href}
 					renderItem={renderItem}
@@ -93,8 +95,8 @@ export default function Nivl({ route, navigation }: PropsNivl) {
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: StatusBar.currentHeight,
-		marginBottom: StatusBar.currentHeight,
+		marginTop: StatusBar.currentHeight as number + 10,
+		marginBottom: 25,
 		width: '100%',
 		display: 'flex',
 		alignItems: 'center'
@@ -130,12 +132,16 @@ const styles = StyleSheet.create({
 	head: {
 		height: 500 / 1.3,
 	},
+	images: {
+		width: '100%',
+		display: 'flex',
+		justifyContent: 'center'
+	},
 	image: {
-		borderTopLeftRadius: 10,
-		borderTopRightRadius: 10,
-		width: 250,
-		height: 500 / 1.3,
-		resizeMode: 'cover'
+		borderRadius: 10,
+		margin: 10,
+		height: 170,
+		width: 170,
 	},
 	description: {
 		width: 200
@@ -153,12 +159,6 @@ const styles = StyleSheet.create({
 		fontWeight: '700',
 		color: '#797575',
 		marginTop: 15
-	},
-	button: {
-		fontFamily: 'Roboto',
-		fontSize: 15,
-		fontWeight: '600',
-		textDecorationLine: 'underline'
 	},
 	elevation: {
 		elevation: 20,

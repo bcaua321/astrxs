@@ -10,7 +10,7 @@ export interface item {
     links: link[]
 }
 
-interface itemDetail {
+export interface itemDetail {
     album: string[],
     center: string,
     title: string,
@@ -27,7 +27,7 @@ interface error {
     message: string
 }
 
-interface link {
+export interface link {
     href: string,
     rel: string,
     prompt: string | undefined,
