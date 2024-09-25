@@ -1,9 +1,8 @@
 import { FC, useState, useEffect } from "react";
-import { Switch, SwitchProps, useSwitch } from "@nextui-org/switch";
+import { Switch, SwitchProps } from "@nextui-org/switch";
 import { useTheme } from "next-themes";
 import { IoIosMoon } from "react-icons/io"
 import { IoIosSunny } from "react-icons/io"
-
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -12,24 +11,11 @@ export interface ThemeSwitchProps {
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = () => {
   const [isMounted, setIsMounted] = useState(false);
-
   const { theme, setTheme } = useTheme();
 
   const onChange = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
-
-  const {
-    Component,
-    slots,
-    isSelected,
-    getBaseProps,
-    getInputProps,
-    getWrapperProps,
-  } = useSwitch({
-    isSelected: theme === "light",
-    onChange,
-  });
 
   useEffect(() => {
     setIsMounted(true);
@@ -40,19 +26,18 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = () => {
 
   return (
     <Switch
-      defaultSelected
-      size="lg"
-      color="secondary"
+      isSelected={theme === "light"}
+      size="sm"
+      color="primary"
       thumbIcon={({ isSelected, className }) =>
         isSelected ? (
-          <IoIosMoon className={className} />
-        ) : (
           <IoIosSunny className={className} />
+        ) : (
+          <IoIosMoon className={className} />
         )
       }
       onChange={onChange}
     >
-      Dark mode
     </Switch>
   );
 };

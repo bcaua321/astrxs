@@ -11,11 +11,32 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        mono: ["var(--font-mono)"],
+        sans: ["var(--font-ubuntu)", "var(--font-inter)"],
       },
     },
   },
   darkMode: "class",
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      layout: {
+        colors: {
+          primary: {
+            DEFAULT: "#4D79FF"
+          },  
+        }
+      },
+      themes: {
+        dark: {
+          colors: {
+            foreground: "#ffffff",
+          }
+        },
+        light: {
+          colors: {
+            foreground: "#000000",
+          }
+        }
+      }
+    })
+  ],
 }

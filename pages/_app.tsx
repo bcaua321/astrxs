@@ -6,12 +6,13 @@ import { useRouter } from "next/router";
 
 import "@/styles/globals.css";
 
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   return (
     <NextUIProvider navigate={router.push}>
-      <NextThemesProvider>
+      <NextThemesProvider defaultTheme="system">
         <Component {...pageProps} />
       </NextThemesProvider>
     </NextUIProvider>
