@@ -9,7 +9,7 @@ export interface ThemeSwitchProps {
   classNames?: SwitchProps["classNames"];
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = () => {
+export const ThemeSwitch: FC<ThemeSwitchProps> = ({className}) => {
   const [isMounted, setIsMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -26,6 +26,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = () => {
 
   return (
     <Switch
+      className={className}
       isSelected={theme === "light"}
       size="sm"
       color="primary"
