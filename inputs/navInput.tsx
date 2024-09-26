@@ -1,18 +1,14 @@
 export const navLinks = [
     {
-        title: "Sobre",
+        title: "About",
         href: "#about",
     },
     {
-        title: "Áreas",
-        href: "#areas",
+        title: "APOD",
+        href: "#apod",
     },
     {
-        title: "Equipe",
-        href: "#team",
-    },
-    {
-        title: "Patrocinadores",
-        href: "#sponsors",
+        title: "NIVL",
+        href: "#nivl",
     }
-    ]
+]
