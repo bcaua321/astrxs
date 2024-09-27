@@ -14,9 +14,12 @@ import {
   import { navLinks } from "@/inputs/navInput";
   import AstrxsLogo from "./astrxsLogo";
 import { ThemeSwitch } from "./switch";
-  
-  export const Navbar = () => {
-    const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
+import { useTheme } from "next-themes";
+
+
+export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
+  const { theme } = useTheme();
     
     return (
     <NextUINavbar disableAnimation={true} disableScrollHandler={true} onMenuOpenChange={setIsMenuOpen}>
@@ -30,12 +33,12 @@ import { ThemeSwitch } from "./switch";
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className="hidden sm:flex p-0 gap-y-0" justify="center">
+        <NavbarContent className="hidden sm:flex p-0" justify="center">
             {
                 navLinks.map((link) => {
                 return (
-                    <NavbarItem className="p-0 leading-none gap-y-0" key={link.href}>
-                        <NavLink  title={link.title} href={link.href} />
+                    <NavbarItem className="p-0 leading-none" key={link.href}>
+                        <NavLink theme={theme} title={link.title} href={link.href} />
                     </NavbarItem>
                 )
                 })
@@ -51,7 +54,7 @@ import { ThemeSwitch } from "./switch";
             navLinks.map((link) => {
               return (
                 <NavbarMenuItem key={link.href}>
-                  <NavLink  title={link.title} href={link.href} />
+                  <NavLink  theme={theme} title={link.title} href={link.href} />
                 </NavbarMenuItem>
               )
             })
