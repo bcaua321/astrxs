@@ -1,6 +1,6 @@
-const AstrxsLogo = ({size} : {size: number}) => {
+const AstrxsLogo = ({size} : {size?: string}) => {
     return (
-        <span className={`capitalize font-bold text-primary text-2xl leading-none`}>
+        <span className={`font-bold text-primary ${size}`}>
             astr<span color="primary" className="text-foreground">x</span>s
         </span>
     )

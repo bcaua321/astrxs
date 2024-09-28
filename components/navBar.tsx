@@ -16,8 +16,7 @@ import {
 import { ThemeSwitch } from "./switch";
 import { useTheme } from "next-themes";
 
-
-export const Navbar = () => {
+export const Navbar = () => { 
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const { theme } = useTheme();
     
@@ -29,7 +28,7 @@ export const Navbar = () => {
             className="sm:hidden"
           />
           <NavbarBrand>
-            <AstrxsLogo size={32}/>
+            <AstrxsLogo />
           </NavbarBrand>
         </NavbarContent>
 
