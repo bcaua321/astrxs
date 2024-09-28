@@ -28,13 +28,13 @@ export default function RootLayout({
         className={`min-h-screen bg-background antialiased ${ubuntu.className}`}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col">
             <Navbar />
-            <main className="container mx-auto pt-16 px-6 flex-grow max-w-[1550px]">
+            <main className="container mx-auto pt-16 px-6 flex-grow max-w-[1550px] h-full">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3">
-              <p>Made with &#10084;&#65039; by Breno Prestes.</p>
+            <footer className="w-full flex items-center justify-center py-3 mt-10 mb-5">
+              <p className="text-sm font-medium">Made with &#10084;&#65039; by Breno Prestes.</p>
             </footer>
           </div>
         </Providers>
