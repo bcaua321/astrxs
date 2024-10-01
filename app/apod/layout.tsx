@@ -6,7 +6,7 @@ export default function RootLayout({
     children: React.ReactNode;
   }) {
     return (
-      <section className="min-h-[80vh] mt-5">
+      <section className="mt-5 max-w-[1980px]">
         {children}
       </section>
     );
