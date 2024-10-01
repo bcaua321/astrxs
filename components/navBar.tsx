@@ -9,7 +9,7 @@ import {
     NavbarItem,
     NavbarMenuItem,
   } from "@nextui-org/navbar";
-  import React, { useEffect }  from "react";
+  import React, { useEffect, useState }  from "react";
   import NavLink from "./link";
   import { navLinks } from "@/inputs/navInput";
   import AstrxsLogo from "./astrxsLogo";
@@ -19,6 +19,13 @@ import { useTheme } from "next-themes";
 export const Navbar = () => { 
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean>(false);
   const { theme } = useTheme();
+  const [ mounted, setMounted ] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
     
     return (
     <NextUINavbar disableAnimation={true} disableScrollHandler={true} onMenuOpenChange={setIsMenuOpen}>
