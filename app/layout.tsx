@@ -4,6 +4,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { ubuntu } from "@/config/fonts";
 import { Navbar } from "@/components/navBar";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -21,21 +22,22 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html suppressHydrationWarning lang="en">
       <head />
       <body
-        className={`min-h-screen bg-background antialiased ${ubuntu.className}`}
+        className={`min-h-screen flex flex-col bg-background antialiased ${ubuntu.className}`}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col">
-            <Navbar />
-            <main className="container mx-auto pt-16 px-6 flex-grow max-w-[1550px] h-full">
+          <Navbar />
+          {/* Div container para o layout flexível */}
+          <div className="flex flex-col flex-grow">
+            <main className="container mx-auto px-3 flex-grow md:px-6">
               {children}
             </main>
-            <footer className="w-full flex items-center justify-center py-3 mt-10 mb-5">
-              <p className="text-sm font-medium">Made with &#10084;&#65039; by Breno Prestes.</p>
-            </footer>
+
+            <Footer />
           </div>
         </Providers>
       </body>
