@@ -21,7 +21,8 @@ module.exports = {
       layout: {
         colors: {
           primary: {
-            DEFAULT: "#4D79FF"
+            DEFAULT: "#4D79FF",
+            background: "#CCC"
           },  
         }
       },
