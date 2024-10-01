@@ -2,7 +2,7 @@ import { Card, CardBody, CardHeader, Link } from "@nextui-org/react";
 
 export default function AboutSection() {
     return (
-      <section className="flex items-center justify-around">
+      <section className="flex items-center justify-around mt-10 md:mt-0">
           <div className="flex gap-y-10 flex-col md:gap-x-14 md:flex-row md:gap-y-0">
                   <div className="max-w-[450px]">
                       <Card className="bg-slate-400/20">
