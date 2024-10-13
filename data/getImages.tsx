@@ -7,7 +7,8 @@ export type ApodResponse = {
     title?: string,
     url?: string,
     explanation?: string,
-    copyright?: string
+    copyright?: string,
+    media_type?:string
 }
 
 export async function getImages({ date } : {date: string}) : Promise<ApodResponse | undefined> {
@@ -16,7 +17,7 @@ export async function getImages({ date } : {date: string}) : Promise<ApodRespons
     const urlDemo = `https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=${date}`;
 
     try {
-        const response = await fetch(urlDemo);
+        const response = await fetch(url);
 
         if (!response.ok) {
             throw new Error('Erro na requisição');
