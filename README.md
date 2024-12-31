@@ -1,8 +1,12 @@
-# Next.js & NextUI Template
+# Astrxs
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+a platform for astronomy enthusiasts
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+![image](https://github.com/user-attachments/assets/e81b1d5d-c0a4-4c40-a9c7-7df3de991ce7)
+
+![image](https://github.com/user-attachments/assets/b1dc6a83-5f67-43c7-a7c9-5aecddaa5b35)
+
+![image](https://github.com/user-attachments/assets/37a4b3bd-e7cb-4053-a936-de2e1d5ed4da)
 
 ## Technologies Used
 
@@ -11,18 +15,9 @@ This is a template for creating applications using Next.js 14 (app directory) an
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
 
 ## How to Use
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
 
 ### Install dependencies
 
@@ -38,15 +33,9 @@ npm install
 npm run dev
 ```
 
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+### Features
+- [x] Dark and white Theme  
+- [X] Responsive Design 
 
 ## License
 
